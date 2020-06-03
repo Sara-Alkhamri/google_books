@@ -11,10 +11,10 @@ module.exports = async (args) => {
         orderBy: 'relevance',
       },
     });
-    // API call returns an array of 5 objects
+    //API call returns an array of 5 objects
     const books = response.data.items;
 
-    // map through the objects
+    //map through the objects
     const booksMap = await books.map((book, index) => ({
       Result: index + 1,
       Title: book.volumeInfo.title || 'none listed',
