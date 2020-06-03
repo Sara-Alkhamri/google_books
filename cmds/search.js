@@ -3,7 +3,7 @@ const getBooks = require('../utils/api');
 const help = require('./help');
 const ReadingList = require('./list');
 
-// to accept user input in command line
+//accepts user input in command line
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 
 class Search {
   constructor(args) {
-    // pass the keywords as argument for getBooks, which queries the API
+    //pass the keywords as argument for getBooks, which queries the API
     this.keywords = Search.checkArgs(args);
     this.books = Search.getBooksFromAPI();
     this.answer = '';
@@ -19,8 +19,8 @@ class Search {
   }
 
   static checkArgs(args) {
-    // if the args don't contain the 'keyword' or 'k' prop,
-    // let user know search parameters are missing and display correct syntax
+    //if the args don't contain the 'keyword' or 'k' prop,
+    //let user know search parameters are missing and display correct syntax
     if (!(args.k || args.keywords)) {
       console.log(`================================
       error! please enter 'books search <options>' (see options below) or type 'books help' for additional menu options.`);
@@ -63,19 +63,19 @@ class Search {
   }
 
   static askToSaveToList() {
-    // after displaying books, ask if user would like to save any of the results to reading list
+    //ask if user would like to save any of the results to reading list
     rl.question('If you would like to save any of these books to your reading list, please enter the corresponding Result number(s).  ', (answer) => {
       this.answer = answer;
       this.booksToSave(this.answer);
 
-      // close readline
+      //close readline
       rl.close();
     });
   }
 
   static booksToSave(answer) {
     const selectedBooks = [];
-    // for each corresponding result, delete "result" property, not relevant in reading list, then push that result to booksForReadingList array to be saved
+    //for each corresponding result, delete "result" property, not relevant in reading list, then push that result to booksForReadingList array to be saved
 
     if (answer.length > 0) {
       for (let i = 0; i < answer.length; i++) {
