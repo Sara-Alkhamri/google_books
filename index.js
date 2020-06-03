@@ -8,15 +8,15 @@ const error = require('./utils/error');
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
 
-  // if no args specified default to help menu
+  //if no args specified default to help menu
   let command = args._[0] || 'help';
 
-  // command for version of books
+  //command for version of books
   if (args.version || args.v) {
     command = 'version';
   }
 
-  // command for help menu
+  //command for help menu
   if (args.help || args.h) {
     command = 'help';
   }
