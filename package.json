@@ -1,0 +1,16 @@
+{
+    "name": "books-cli",
+    "version": "1.0.0",
+    "license": "MIT",
+    "bin": {
+        "books": "bin/books"
+    },
+    "scripts": {},
+    "devDependencies": {},
+    "dependencies": {
+        "axios": "^0.19.2",
+        "dotenv": "^8.2.0",
+        "minimist": "^1.2.5",
+        "ora": "^4.0.4"
+    }
+}
