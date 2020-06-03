@@ -4,7 +4,7 @@ const fs = require('fs');
 
 class ReadingList {
   constructor(list) {
-    // get list of books from search class
+    //get list of books from search class
     this.booksFromSearch = list;
   }
 
@@ -14,30 +14,30 @@ class ReadingList {
   }
 
   saveBooksToFile() {
-    // position in the reading list the new books should be appended
+    //position in the reading list the new books should be appended
     const insertPosition = 21;
 
-    // the file path for the reading list
+    //the file path for the reading list
     const filePath = './cmds/list.js';
 
-    // stringify results to write to file
+    //stringify results to write to file
     const books = this.jsonStringifyResults();
 
-    // read the existing list file
+    //read the existing list file
     fs.readFile(filePath, (err, data) => {
       if (err) {
         throw err;
       }
       let fileContent = data.toString();
       fileContent = fileContent.substring(insertPosition);
-      // open file, r+ = for reading and writing
+      //open file, r+ = for reading and writing
       const file = fs.openSync(filePath, 'r+');
 
-      // add exising file content to new file content so it is not overwritten
+      //add exising file content to new file content so it is not overwritten
       const buffer = Buffer.from(`${books}, ${fileContent}`);
-      // write file specifying file, content, length of content, and position of where to write new conent
+      //write file specifying file, content, length of content, and position of where to write new conent
       fs.writeSync(file, buffer, 0, buffer.length, insertPosition);
-      // alert user that their choices have been saved to reading list
+      //alert user that their choices have been saved to reading list
       this.alertBooksSaved();
     });
   }
